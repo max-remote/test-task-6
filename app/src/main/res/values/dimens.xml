@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="edit_text_margin_top">16dp</dimen>
+    <dimen name="details_margin">8dp</dimen>
+    <dimen name="list_margin">8dp</dimen>
+    <dimen name="margin_horizontal_cl_list">10dp</dimen>
+    <dimen name="margin_vertical_cl_list">5dp</dimen>
+    <dimen name="elevation_list">2dp</dimen>
+    <dimen name="text_size_name">18sp</dimen>
+    <dimen name="text_size_surname">18sp</dimen>
+    <dimen name="text_size_phone">18sp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="card_view_margin">8dp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_elevation">25dp</dimen>
+    <dimen name="standard_padding">16dp</dimen>
+    <dimen name="very_small_padding">6dp</dimen>
+</resources>

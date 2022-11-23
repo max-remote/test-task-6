@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_view_margin"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:contentDescription="@string/contact_icon_content_descript"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/itemFirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/very_small_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/itemImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Имя" />
+
+        <TextView
+            android:id="@+id/itemSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/very_small_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/itemImage"
+            app:layout_constraintTop_toBottomOf="@id/itemFirstName"
+            tools:text="Фамильевна" />
+
+        <TextView
+            android:id="@+id/itemNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/very_small_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_name"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toEndOf="@id/itemImage"
+            app:layout_constraintTop_toBottomOf="@+id/itemSurname"
+            tools:text="+79998887766" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
