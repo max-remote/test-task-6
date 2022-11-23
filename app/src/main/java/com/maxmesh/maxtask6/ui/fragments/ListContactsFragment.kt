@@ -35,12 +35,12 @@ class ListContactsFragment : Fragment() {
     }
 
     private fun clickOnItemListener() {
-        adapter.onItemClickListener = { _ ->
+        adapter.onItemClickListener = { contact ->
             requireActivity().supportFragmentManager.beginTransaction()
                 .addToBackStack(null)
                 .replace(
                     R.id.container,
-                    DetailsContactFragment()
+                    DetailsContactFragment.newInstance(contact)
                 )
                 .commit()
         }
