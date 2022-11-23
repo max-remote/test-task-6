@@ -1,4 +1,4 @@
-package com.maxmesh.maxtask6.ui
+package com.maxmesh.maxtask6.ui.fragments
 
 import android.graphics.Rect
 import androidx.recyclerview.widget.RecyclerView

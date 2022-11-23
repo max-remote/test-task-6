@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.maxmesh.maxtask6.R
 import com.maxmesh.maxtask6.databinding.FragmentContactsListBinding
-import com.maxmesh.maxtask6.ui.MarginItemDecoration
 import com.maxmesh.maxtask6.ui.activity.MainActivity
 import com.maxmesh.maxtask6.ui.adapter.ContactsAdapter
 
@@ -80,6 +79,10 @@ class ListContactsFragment : Fragment() {
             dividerItemDecoration.setDrawable(it)
         }
         binding.recyclerView.addItemDecoration(dividerItemDecoration)
+        setMarginWithDecoration()
+    }
+
+    private fun setMarginWithDecoration() {
         val itemMargin = MarginItemDecoration()
         binding.recyclerView.addItemDecoration(itemMargin)
     }
