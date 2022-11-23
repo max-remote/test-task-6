@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.maxmesh.maxtask6.R
 import com.maxmesh.maxtask6.databinding.FragmentContactsListBinding
+import com.maxmesh.maxtask6.ui.MarginItemDecoration
 import com.maxmesh.maxtask6.ui.activity.MainActivity
 import com.maxmesh.maxtask6.ui.adapter.ContactsAdapter
 
@@ -27,9 +31,14 @@ class ListContactsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    private fun init() {
         initRecyclerView()
         clickOnItemListener()
         clickLongItemListener()
+        setDividerLine()
     }
 
     private fun initRecyclerView() {
@@ -63,6 +72,16 @@ class ListContactsFragment : Fragment() {
                 .setNegativeButton("No, thanks") { _, _ -> }
                 .show()
         }
+    }
+
+    private fun setDividerLine() {
+        val dividerItemDecoration = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)
+        ResourcesCompat.getDrawable(resources, R.drawable.divider, null)?.let {
+            dividerItemDecoration.setDrawable(it)
+        }
+        binding.recyclerView.addItemDecoration(dividerItemDecoration)
+        val itemMargin = MarginItemDecoration()
+        binding.recyclerView.addItemDecoration(itemMargin)
     }
 
     override fun onDestroyView() {

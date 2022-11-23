@@ -15,4 +15,7 @@
     <dimen name="card_elevation">25dp</dimen>
     <dimen name="standard_padding">16dp</dimen>
     <dimen name="very_small_padding">6dp</dimen>
+    <dimen name="divider_height">4dp</dimen>
+    <dimen name="divider_right_margin">70dp</dimen>
+    <dimen name="divider_left_margin">70dp</dimen>
 </resources>
