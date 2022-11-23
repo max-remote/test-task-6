@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.maxmesh.maxtask6.R
 import com.maxmesh.maxtask6.databinding.FragmentContactsListBinding
 import com.maxmesh.maxtask6.ui.activity.MainActivity
 import com.maxmesh.maxtask6.ui.adapter.ContactsAdapter
@@ -25,11 +26,24 @@ class ListContactsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        clickOnItemListener()
     }
 
     private fun initRecyclerView() {
         binding.recyclerView.adapter = adapter
         adapter.submitList((requireActivity() as MainActivity).contacts)
+    }
+
+    private fun clickOnItemListener() {
+        adapter.onItemClickListener = { _ ->
+            requireActivity().supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(
+                    R.id.container,
+                    DetailsContactFragment()
+                )
+                .commit()
+        }
     }
 
     override fun onDestroyView() {
