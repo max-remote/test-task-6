@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.maxmesh.maxtask6.databinding.FragmentContactsListBinding
+import com.maxmesh.maxtask6.ui.activity.MainActivity
+import com.maxmesh.maxtask6.ui.adapter.ContactsAdapter
 
 class ListContactsFragment : Fragment() {
 
     private var _binding: FragmentContactsListBinding? = null
     private val binding get() = _binding!!
+    private val adapter = ContactsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -21,6 +24,12 @@ class ListContactsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        binding.recyclerView.adapter = adapter
+        adapter.submitList((requireActivity() as MainActivity).contacts)
     }
 
     override fun onDestroyView() {
