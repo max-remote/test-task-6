@@ -10,13 +10,16 @@ import com.maxmesh.maxtask6.R
 import com.maxmesh.maxtask6.databinding.ContactItemBinding
 import com.maxmesh.maxtask6.domain.ContactEntity
 
-class ContactsAdapter : ListAdapter<ContactEntity, ContactsAdapter.ContactsViewHolder>(Comparator()) {
+class ContactsAdapter :
+    ListAdapter<ContactEntity, ContactsAdapter.ContactsViewHolder>(Comparator()) {
 
     var onItemClickListener: ((ContactEntity) -> Unit)? = null
+    var onItemLongClickListener: ((ContactEntity) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ContactsViewHolder(parent)
 
-    override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) =
+        holder.bind(getItem(position))
 
     inner class ContactsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false)
@@ -29,8 +32,13 @@ class ContactsAdapter : ListAdapter<ContactEntity, ContactsAdapter.ContactsViewH
             itemSurname.text = contactEntity.surname
             itemNumber.text = contactEntity.phoneNumber
 
-            cardView.setOnClickListener{
+            cardView.setOnClickListener {
                 onItemClickListener?.invoke(contactEntity)
+            }
+
+            cardView.setOnLongClickListener {
+                onItemLongClickListener?.invoke(contactEntity)
+                true
             }
         }
     }

@@ -1,9 +1,11 @@
 package com.maxmesh.maxtask6.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.maxmesh.maxtask6.R
 import com.maxmesh.maxtask6.databinding.FragmentContactsListBinding
@@ -27,6 +29,7 @@ class ListContactsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         clickOnItemListener()
+        clickLongItemListener()
     }
 
     private fun initRecyclerView() {
@@ -43,6 +46,22 @@ class ListContactsFragment : Fragment() {
                     DetailsContactFragment.newInstance(contact)
                 )
                 .commit()
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun clickLongItemListener() {
+        adapter.onItemLongClickListener = {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Delete contact")
+                .setMessage("Are you sure that you want to delete this contact?")
+                .setIcon(R.drawable.ic_delete)
+                .setPositiveButton("Yes") { _, _ ->
+                    (requireActivity() as MainActivity).contacts.remove(it)
+                    adapter.notifyDataSetChanged()
+                }
+                .setNegativeButton("No, thanks") { _, _ -> }
+                .show()
         }
     }
 
