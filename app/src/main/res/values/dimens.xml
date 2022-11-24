@@ -18,4 +18,7 @@
     <dimen name="divider_height">4dp</dimen>
     <dimen name="divider_right_margin">70dp</dimen>
     <dimen name="divider_left_margin">70dp</dimen>
+    <dimen name="search_view_margin">16dp</dimen>
+    <dimen name="radius_for_search_view_back">999dp</dimen>
+    <dimen name="width_search_view_back">2dp</dimen>
 </resources>

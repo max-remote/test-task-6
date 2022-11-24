@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="divider_color">#2FB7B7B7</color>
+    <color name="stroke_search_view_color">#2FB7B7B7</color>
 </resources>
