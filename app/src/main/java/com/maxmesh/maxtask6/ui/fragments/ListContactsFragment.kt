@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -41,7 +40,6 @@ class ListContactsFragment : Fragment() {
         clickOnItemListener()
         clickLongItemListener()
         setDividerLine()
-        doSearchInfo()
     }
 
     private fun initRecyclerView() {
@@ -111,18 +109,6 @@ class ListContactsFragment : Fragment() {
                     .commit()
             }
         }
-    }
-
-    private fun doSearchInfo() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
-        })
     }
 
     override fun onDestroyView() {
