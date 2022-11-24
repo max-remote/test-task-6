@@ -11,7 +11,7 @@ import com.maxmesh.maxtask6.databinding.ContactItemBinding
 import com.maxmesh.maxtask6.domain.ContactEntity
 
 class ContactsAdapter :
-    ListAdapter<ContactEntity, ContactsAdapter.ContactsViewHolder>(Comparator()) {
+    ListAdapter<ContactEntity, ContactsAdapter.ContactsViewHolder>(Comparator()){
 
     var onItemClickListener: ((ContactEntity) -> Unit)? = null
     var onItemLongClickListener: ((ContactEntity) -> Unit)? = null
@@ -23,7 +23,7 @@ class ContactsAdapter :
 
     inner class ContactsViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.contact_item, parent, false)
-    ) {
+    ){
         private val binding = ContactItemBinding.bind(itemView)
 
         fun bind(contactEntity: ContactEntity) = with(binding) {

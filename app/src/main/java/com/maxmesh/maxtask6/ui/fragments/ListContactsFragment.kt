@@ -1,11 +1,14 @@
 package com.maxmesh.maxtask6.ui.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -38,6 +41,7 @@ class ListContactsFragment : Fragment() {
         clickOnItemListener()
         clickLongItemListener()
         setDividerLine()
+        doSearchInfo()
     }
 
     private fun initRecyclerView() {
@@ -46,15 +50,7 @@ class ListContactsFragment : Fragment() {
     }
 
     private fun clickOnItemListener() {
-        adapter.onItemClickListener = { contact ->
-            requireActivity().supportFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .replace(
-                    R.id.container,
-                    DetailsContactFragment.newInstance(contact)
-                )
-                .commit()
-        }
+        checkScreenSize()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -85,6 +81,48 @@ class ListContactsFragment : Fragment() {
     private fun setMarginWithDecoration() {
         val itemMargin = MarginItemDecoration()
         binding.recyclerView.addItemDecoration(itemMargin)
+    }
+
+    private fun isTablet(context: Context): Boolean {
+        return ((context.resources.configuration.screenLayout
+                and Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+    }
+
+    private fun checkScreenSize() {
+        if (isTablet(requireContext())) {
+            adapter.onItemClickListener = { contact ->
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(
+                        R.id.container_details,
+                        DetailsContactFragment.newInstance(contact)
+                    )
+                    .commit()
+            }
+        } else {
+            adapter.onItemClickListener = { contact ->
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .replace(
+                        R.id.container,
+                        DetailsContactFragment.newInstance(contact)
+                    )
+                    .commit()
+            }
+        }
+    }
+
+    private fun doSearchInfo() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {
